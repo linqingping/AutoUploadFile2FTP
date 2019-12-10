@@ -137,10 +137,13 @@ func InitConfig(path string) map[string]string {
 //检查FTP是否可连接
 func checkFTP(server,port string)bool{
 	//连接FTP
-	if _,err:=goftp.Connect(server+":"+port);err!=nil{
+	var ftp *goftp.FTP
+	var err error
+	if ftp,err=goftp.Connect(server+port);err!=nil{
 		fmt.Println(err)
 		return false
 	}
+	ftp.close()
 	return true
 }
 //上传文件到FTP
