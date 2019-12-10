@@ -20,6 +20,7 @@ func main() {
 	var  endflag = configMap["endflag"]
 	var server = configMap["server"]
 	var port = configMap["port"]
+	var localpath  = configMap["localpath"]
 	//创建一个监控对象
 	watch, err := fsnotify.NewWatcher()
 	if err != nil {
@@ -27,7 +28,7 @@ func main() {
 	}
 	defer watch.Close()
 	//添加要监控的对象，文件或文件夹
-	err = watch.Add("./FTPdemo")
+	err = watch.Add(localpath)
 	if err != nil {
 		log.Fatal(err)
 	}
