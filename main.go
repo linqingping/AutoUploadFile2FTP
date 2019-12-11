@@ -49,8 +49,8 @@ func main() {
 				go func() {
 					filecontext, _ := ioutil.ReadFile(ev.Name)
 					//fmt.Println(len(filecontext))
-					if endflag == string(filecontext[len(filecontext)-5:len(filecontext)-1]) {
-						fmt.Println(string(filecontext))
+					if strings.Contains(string(filecontext),endflag){
+						//fmt.Println(string(filecontext))
 						for i:=0;i<10;i++{
 							result:=checkFTP(server,port)
 							if result{
